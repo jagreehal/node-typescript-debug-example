@@ -1,0 +1,40 @@
+{
+  "name": "node-typescript-debug-example",
+  "version": "1.0.0",
+  "description": "example of how to debug typescript node projects",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "build": "rimraf dist && tsc",
+    "test": "jest"
+  },
+  "author": "Jag Reehal",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "source-map-support": "^0.4.11"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.0.37",
+    "@types/jest": "^18.1.1",
+    "@types/node": "^7.0.5",
+    "jest": "^19.0.2",
+    "rimraf": "^2.6.1",
+    "ts-node": "^2.1.0",
+    "typescript": "^2.2.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
+    "testMatch": [
+      "**/*.spec.(ts|tsx)"
+    ]
+  }
+}
