@@ -3,6 +3,8 @@ module.exports = function(wallaby) {
     debug: true,
     files: [
       "src/**/*.ts*",
+      "tsconfig.json",
+      "package.json",
       "!src/**/*.spec.ts*"
     ],
     tests: ["src/**/*.spec.ts*"],
@@ -13,14 +15,9 @@ module.exports = function(wallaby) {
       })
     },
     testFramework: "jest",
-    setup: function(w) {
-      wallaby.testFramework.configure({
-        moduleFileExtensions: ["ts", "tsx"],
-        transform: {
-          "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
-        },
-        testMatch: ["**/*.spec.(ts|tsx)"]
-      });
+    setup: function (wallaby) {
+      var jestConfig = require('./package.json').jest;
+      wallaby.testFramework.configure(jestConfig);
     }
   };
 };
