@@ -1,39 +1,48 @@
 {
   "version": "0.2.0",
-  "configurations": [{
+  "configurations": [
+    {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceRoot}/src/index.ts",
-      "stopOnEntry": false,
-      "cwd": "${workspaceRoot}",
-      "runtimeArgs": [
-        "-r",
-        "ts-node/register"
-      ],
-      "sourceMaps": true,
-      "outDir": "${workspaceRoot}/dist"
+      "name": "Local Nodemon",
+      "preLaunchTask": "tsc-watch",
+      "protocol": "inspector",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "nodemon"],
+      "restart": true,
+      "port": 9230,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "outFiles": ["${workspaceRoot}/dist/**/*.js"]
     },
     {
-      "name": "Attach",
       "type": "node",
-      "request": "attach",
-      "port": 5858,
-      "address": "localhost",
-      "restart": false,
-      "sourceMaps": false,
-      "outDir": null,
+      "request": "launch",
+      "name": "Launch in Docker",
+      "preLaunchTask": "tsc-watch",
+      "protocol": "inspector",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "docker-debug"],
+      "port": 9230,
+      "restart": true,
+      "timeout": 60000,
       "localRoot": "${workspaceRoot}",
-      "remoteRoot": null
+      "remoteRoot": "/usr/app",
+      "outFiles": ["${workspaceRoot}/dist/**/*.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     },
     {
-      "name": "Attach to Process",
       "type": "node",
       "request": "attach",
-      "processId": "${command.PickProcess}",
-      "port": 5858,
-      "sourceMaps": false,
-      "outDir": null
+      "name": "Attach to Docker",
+      "preLaunchTask": "tsc-watch",
+      "protocol": "inspector",
+      "port": 9230,
+      "restart": true,
+      "localRoot": "${workspaceRoot}",
+      "remoteRoot": "/usr/app",
+      "outFiles": ["${workspaceRoot}/dist/**/*.js"]
     }
   ]
 }

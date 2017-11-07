@@ -16,4 +16,4 @@ services:
       - "3000:3000"
       - "9229:9229"
     volumes:
-      - ./dist:/opt/src/app    
+      - ./dist:/usr/app/dist    
