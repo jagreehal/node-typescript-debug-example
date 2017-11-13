@@ -53,7 +53,7 @@
     "rimraf": "^2.6.2",
     "ts-jest": "21.2.1",
     "tslint": "^5.8.0",
-    "tslint-config-airbnb": "5.3.0",
+    "tslint-config-airbnb": "5.3.1",
     "tslint-config-prettier": "^1.6.0",
     "typescript": "^2.6.1"
   },
