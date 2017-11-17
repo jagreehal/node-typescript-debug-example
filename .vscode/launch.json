@@ -43,6 +43,21 @@
       "localRoot": "${workspaceRoot}",
       "remoteRoot": "/usr/app",
       "outFiles": ["${workspaceRoot}/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug all tests",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug specific test",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["${workspaceFolder}/test/foo.spec.ts"],
+      "internalConsoleOptions": "openOnSessionStart"
     }
   ]
 }

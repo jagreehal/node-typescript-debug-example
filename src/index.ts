@@ -6,29 +6,15 @@ import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 
-import { add } from './lib/calc';
+import app from './app';
 
 const PORT = process.env.PORT || 5555;
 
-const app = express();
-
-app
-  .use(helmet())
-  .use(compression())
-  .use(bodyParser.json())
-  .use(bodyParser.urlencoded({ extended: true }))
-  .use(morgan('common'));
-
-app.get('/', async (req, res) => {
-  const result = await add(2, 0);
-  res.send({ result });
-});
-
-const server = app.listen(PORT, function() {
+const server = app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
 
-process.on('SIGINT', function onSigint() {
+process.on('SIGINT', () => {
   console.info(
     'Got SIGINT (aka ctrl-c in docker). Graceful shutdown ',
     new Date().toISOString()
@@ -36,7 +22,7 @@ process.on('SIGINT', function onSigint() {
   shutdown();
 });
 
-process.on('SIGTERM', function onSigterm() {
+process.on('SIGTERM', () => {
   console.info(
     'Got SIGTERM (docker container stop). Graceful shutdown ',
     new Date().toISOString()
