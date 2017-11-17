@@ -51,7 +51,7 @@
     "nodemon": "^1.12.1",
     "prettier": "^1.8.1",
     "rimraf": "^2.6.2",
-    "ts-jest": "21.2.1",
+    "ts-jest": "21.2.2",
     "tslint": "^5.8.0",
     "tslint-config-airbnb": "5.3.0",
     "tslint-config-prettier": "^1.6.0",
