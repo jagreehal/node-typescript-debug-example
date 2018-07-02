@@ -1,19 +1,31 @@
-FROM mhart/alpine-node:8
-RUN mkdir -p /usr/app
-
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
+FROM mhart/alpine-node:10 as base
+RUN mkdir -p /app
+WORKDIR /app
+COPY package.json /app
+RUN yarn install --production
+COPY ./dist /app/dist
 
 ARG PORT=80
 ENV PORT $PORT
 EXPOSE $PORT
 
-WORKDIR /usr/app
-COPY package.json /usr/app
-RUN npm install
-ENV PATH /usr/app/node_modules/.bin:$PATH
+FROM base as debug
 
-WORKDIR /usr/app/dist
-COPY ./dist /usr/app/dist
+COPY --from=base /app .
+RUN yarn
+ENV PATH /app/node_modules/.bin:$PATH
 
-CMD [ "node", "index.js" ]
+FROM debug as test
+
+COPY --from=base /app .
+COPY ./tsconfig.json /app
+COPY ./tslint.json /app
+COPY ./src /app/src
+# RUN yarn lint
+RUN yarn test
+
+
+FROM mhart/alpine-node:base-10
+COPY --from=base /app .
+
+CMD ["node", "dist/index.js"]

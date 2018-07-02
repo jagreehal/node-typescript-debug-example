@@ -1,14 +1,24 @@
 {
   "version": "0.2.0",
-  "configurations": [
+  "configurations": [{
+      "type": "node",
+      "request": "launch",
+      "name": "Local TS",
+      "protocol": "inspector",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "restart": true,
+      "port": 9230,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+    },
     {
       "type": "node",
       "request": "launch",
-      "name": "Local Nodemon",
-      "preLaunchTask": "tsc-watch",
+      "name": "Local JS",
       "protocol": "inspector",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "nodemon"],
+      "runtimeArgs": ["run", "dev:js"],
       "restart": true,
       "port": 9230,
       "console": "integratedTerminal",

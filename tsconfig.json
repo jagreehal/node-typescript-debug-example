@@ -4,7 +4,7 @@
     "target": "es6",
     "outDir": "dist",
     "moduleResolution": "node",
-    "inlineSourceMap": true ,
+    "sourceMap": true,
     "strictNullChecks": true,
     "allowUnreachableCode": true,
     "noEmitOnError": false

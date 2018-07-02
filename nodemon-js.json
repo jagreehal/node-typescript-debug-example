@@ -1,0 +1,6 @@
+{
+  "ignore": ["dist/**/*.spec.js*", ".git", "node_modules"],
+  "watch": ["dist"],
+  "exec": "node --inspect=0.0.0.0:9230 dist/index.js",
+  "ext": "js*"
+}
