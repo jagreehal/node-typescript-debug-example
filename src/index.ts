@@ -1,4 +1,5 @@
 require('source-map-support').install();
+require('dotenv').config();
 
 import app from './app';
 

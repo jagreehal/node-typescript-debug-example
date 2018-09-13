@@ -21,9 +21,9 @@ COPY --from=base /app .
 COPY ./tsconfig.json /app
 COPY ./tslint.json /app
 COPY ./src /app/src
-# RUN yarn lint
-RUN yarn test
 
+RUN yarn lint
+RUN yarn test
 
 FROM mhart/alpine-node:base-10
 COPY --from=base /app .
