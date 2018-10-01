@@ -3,7 +3,7 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY package.json /app
 RUN yarn install --production
-COPY ./dist /app/dist
+COPY /dist /app/dist
 
 ARG PORT=80
 ENV PORT $PORT
