@@ -3,7 +3,7 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY package.json /app
 RUN yarn install --production
-COPY ./dist /app/dist
+COPY /dist /app/dist
 
 ARG PORT=80
 ENV PORT $PORT
@@ -21,9 +21,9 @@ COPY --from=base /app .
 COPY ./tsconfig.json /app
 COPY ./tslint.json /app
 COPY ./src /app/src
-# RUN yarn lint
-RUN yarn test
 
+RUN yarn lint
+RUN yarn test
 
 FROM mhart/alpine-node:base-10
 COPY --from=base /app .

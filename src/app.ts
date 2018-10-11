@@ -18,7 +18,7 @@ app
   .use(cors());
 
 app.get('/', async (req, res) => {
-  const result = await add(2, 0);
+  const result = await add(2, 1);
   res.send({ result });
 });
 

@@ -6,15 +6,15 @@ services:
       context: .
       target: debug
       args:
-        - NODE_ENV=development         
-    command: "npm run nodemon"
-    environment:    
-      PORT: 5000
+        - NODE_ENV=development
+    command: 'npm run dev:docker'
+    environment:
+      PORT: 8080
     expose:
-      - "3000"
-      - "9230"
+      - '8080'
+      - '9230'
     ports:
-      - "5000:5000"
-      - "9230:9230"
+      - '8080:8080'
+      - '9230:9230'
     volumes:
-      - ./dist:/app/dist    
+      - ./dist:/app/dist
