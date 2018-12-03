@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-typescript-debug-example-service
+spec:
+  selector:
+    app: node-typescript-debug-example-api
+  ports:
+    - protocol: TCP
+      port: 80
+  type: LoadBalancer
