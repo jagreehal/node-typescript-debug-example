@@ -28,4 +28,4 @@ RUN yarn test
 FROM mhart/alpine-node:base-10
 COPY --from=base /app .
 
-CMD ["node", "dist/index.js"]
+CMD node dist/index.js
