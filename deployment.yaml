@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-typescript-debug-example-deployment
+  name: node-typescript-debug-example
 spec:
   selector:
     matchLabels:
@@ -14,22 +14,22 @@ spec:
     spec:
       containers:
         - name: node-typescript-debug-example
-          command: ['npm run dev:docker']
           image: node-typescript-debug-example:v1
           imagePullPolicy: Never
+          command: ['node dist/index.js']
           ports:
             - containerPort: 80
-          volumeMounts:
-            - mountPath: /app/dist
-              name: app-mount
+          # volumeMounts:
+          #   - mountPath: /app/dist
+          #     name: app-mount
           livenessProbe:
             httpGet:
               path: /
               port: 80
           env:
-            - name: NAME
-              value: value
-      volumes:
-        - name: app-mount
-          hostPath:
-            path: /mounted-app-dist
+            - name: PORT
+              value: '80'
+      # volumes:
+      #   - name: app-mount
+      #     hostPath:
+      #       path: /mounted-app-dist

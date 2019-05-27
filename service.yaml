@@ -4,7 +4,7 @@ metadata:
   name: node-typescript-debug-example-service
 spec:
   selector:
-    app: node-typescript-debug-example-api
+    app: node-typescript-debug-example
   ports:
     - protocol: TCP
       port: 80

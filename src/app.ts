@@ -1,9 +1,9 @@
-import * as express from 'express';
-import * as compression from 'compression';
-import * as bodyParser from 'body-parser';
-import * as helmet from 'helmet';
-import * as morgan from 'morgan';
-import * as cors from 'cors';
+import express from 'express';
+import compression from 'compression';
+import bodyParser from 'body-parser';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import cors from 'cors';
 
 import { add } from './lib/calc';
 

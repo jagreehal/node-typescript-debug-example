@@ -13,7 +13,7 @@ FROM base as debug
 
 COPY --from=base /app .
 RUN yarn
-ENV PATH /app/node_modules/.bin:$PATH
+# ENV PATH /app/node_modules/.bin:$PATH
 
 FROM debug as test
 
@@ -28,4 +28,4 @@ RUN yarn test
 FROM mhart/alpine-node:base-10
 COPY --from=base /app .
 
-CMD ["node", "dist/index.js"]
+CMD node dist/index.js

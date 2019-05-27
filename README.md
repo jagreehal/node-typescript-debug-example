@@ -10,3 +10,16 @@
 minikube mount ./dist:/mounted-app-dist
 ```bash
 ````
+
+## set up minikube
+
+eval $(minikube docker-env)
+
+## run
+
+```
+npm run docker.build
+npm run kube.deploy
+npm run kube.service
+npm run kube.launch
+```
