@@ -16,6 +16,7 @@ spec:
         - name: node-typescript-debug-example
           image: node-typescript-debug-example:v1
           imagePullPolicy: Never
+          command: ['node dist/index.js']
           ports:
             - containerPort: 80
           # volumeMounts:

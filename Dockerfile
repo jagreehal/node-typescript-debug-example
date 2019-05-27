@@ -13,7 +13,7 @@ FROM base as debug
 
 COPY --from=base /app .
 RUN yarn
-ENV PATH /app/node_modules/.bin:$PATH
+# ENV PATH /app/node_modules/.bin:$PATH
 
 FROM debug as test
 
